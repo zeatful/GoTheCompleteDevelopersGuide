@@ -32,7 +32,7 @@ func main() {
 	// give me the memory address of jim
 	jimPointer := &jim // convert jim to a pointer
 
-	// call updateName on this address
+	// call updateName on this pointer
 	jimPointer.updateName("jimmy")
 	jim.print()
 
@@ -59,4 +59,13 @@ func (p person) print() {
 func (p *person) updateName(newFirstName string) {
 	// converts person to a value
 	(*p).firstName = newFirstName
+
+	// Question, how is the below different?
+	//p.firstName = newFirstName
 }
+
+/* pointer and reference conversions:
+
+Turn |address| into |value|   with |*address|
+Turn |value|   into |address| with |&value|
+*/
