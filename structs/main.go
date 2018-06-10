@@ -12,4 +12,6 @@ type person struct {
 func main() {
 	john := person{firstName: "John", lastName: "Doe"}
 	fmt.Println(john)
+	// prints each field name and value
+	fmt.Printf("%+v", john)
 }
