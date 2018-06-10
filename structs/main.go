@@ -73,3 +73,24 @@ Turn |value|   into |address| with |&value|
 */
 
 // ********* GO gotcha Slices do not pass by value ********
+
+/*
+	----------------------------------
+	 Passed By Value (need pointers)
+	----------------------------------
+	int
+	float
+	string
+	bool
+	struct
+
+	------------------------------------------
+	 Passed By Reference (don't need pointers)
+	------------------------------------------
+	slice
+	map
+	channel
+	pointer (duh?)
+	function
+
+*/
