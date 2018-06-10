@@ -48,9 +48,9 @@ func (p person) print() {
 }
 
 /*
-	//* infront of a type means it is a pointer to an object of that type
+	// * here is a type description - takes a pointer to something
 	func( pointerToSomething *something) method() {
-		// * in front of a variable means the value of that object
+		// * here is an operator - converting pointer to a something value
 		*pointerToSomething
 	}
 */
