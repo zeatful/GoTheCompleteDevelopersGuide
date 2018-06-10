@@ -30,10 +30,11 @@ func main() {
 	//fmt.Printf("%+v", jim)
 
 	// give me the memory address of jim
-	jimPointer := &jim // convert jim to a pointer
+	//jimPointer := &jim // convert jim to a pointer
 
 	// call updateName on this pointer
-	jimPointer.updateName("jimmy")
+	//jimPointer.updateName("jimmy")
+	jim.updateName("jimmy")
 	jim.print()
 
 	//john := person{firstName: "John", lastName: "Doe"}
@@ -60,7 +61,8 @@ func (p *person) updateName(newFirstName string) {
 	// converts person to a value
 	(*p).firstName = newFirstName
 
-	// Question, how is the below different?
+	// Question, how is the below different? Didn't need to
+	// use & above in main to get pointer receiver either?
 	//p.firstName = newFirstName
 }
 
@@ -69,3 +71,5 @@ func (p *person) updateName(newFirstName string) {
 Turn |address| into |value|   with |*address|
 Turn |value|   into |address| with |&value|
 */
+
+// ********* GO gotcha Slices do not pass by value ********
