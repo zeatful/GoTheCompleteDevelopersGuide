@@ -73,7 +73,8 @@ Turn |value|   into |address| with |&value|
 */
 
 // ********* GO gotcha Slices do not pass by value ********
-
+// a slice is a structure with a pointer to an array in memory, passing it will copy
+// the slice, however both will point to the same underlying array in memory
 /*
 	----------------------------------
 	 Passed By Value (need pointers)
