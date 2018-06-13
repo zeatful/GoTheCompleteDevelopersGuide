@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -14,12 +15,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	// slice is static and cannot grow
-	bs := make([]byte, 99999)
+	// one line replacement for code below
+	io.Copy(os.Stdout, resp.Body)
 
-	// reads data into byte slice until it runs out of space
-	resp.Body.Read(bs)
-
-	// cast byte slice into string and print it
-	fmt.Println(string(bs))
+	/*
+		// slice is static and cannot grow
+		bs := make([]byte, 99999)
+		// reads data into byte slice until it runs out of space
+		resp.Body.Read(bs)
+		// cast byte slice into string and print it
+		fmt.Println(string(bs))
+	*/
 }
