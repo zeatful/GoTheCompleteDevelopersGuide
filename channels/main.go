@@ -64,8 +64,13 @@ func main() {
 	*/
 
 	// wait for the same number of responses
-	for i := 0; i < len(urls); i++ {
-		fmt.Println(<-c)
+	for _, url := range urls {
+		go checkLink(url, c)
+	}
+
+	// infinite loop
+	for {
+		go checkLink(<-c, c)
 	}
 }
 
@@ -73,8 +78,10 @@ func checkLink(url string, c chan string) {
 	_, err := http.Get(url) // blocking call
 	if err != nil {
 		// send message to channel
-		c <- url + " might be down!"
+		fmt.Println(url, "might be down!")
+		c <- url
 	}
 	// send message to channel
-	c <- url + " is up!"
+	fmt.Println(url, "is up!")
+	c <- url
 }
