@@ -4,10 +4,22 @@ import (
 	"fmt"
 )
 
+/*
+	Notes on Interfaces:
+
+	type bot interface {
+	//   ^interface name
+		getGreeting			(string, int)	(string, error)
+	//	  ^function name     ^list of args 	^list of return types
+	}
+*/
+
 type bot interface {
 	getGreeting() string
 }
 
+// englishBot and spanishBot got the bot interace implicitly by
+// the usage of the print function
 type englishBot struct{}
 type spanishBot struct{}
 
