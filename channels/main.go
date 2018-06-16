@@ -53,8 +53,20 @@ func main() {
 		go checkLink(url, c)
 	}
 
-	// receive a value from the channel and immediately log it
-	fmt.Println(<-c)
+	/*
+		waiting for a channel message is a blocking call,
+		after the first message is sent to the channel,
+		the main routine prints it and exits before any other
+		go routines finish...
+
+		//receive a value from the channel and immediately log it
+		fmt.Println(<-c)
+	*/
+
+	// wait for the same number of responses
+	for i := 0; i < len(urls); i++ {
+		fmt.Println(<-c)
+	}
 }
 
 func checkLink(url string, c chan string) {
