@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -63,18 +64,17 @@ func main() {
 		fmt.Println(<-c)
 	*/
 
-	// wait for the same number of responses
-	for _, url := range urls {
-		go checkLink(url, c)
-	}
-
-	// infinite loop
-	for {
-		go checkLink(<-c, c)
+	/*
+		wait for channel to return a value, assign it to l
+		then pass it to / spawn a new go routine
+	*/
+	for l := range c {
+		go checkLink(l, c)
 	}
 }
 
 func checkLink(url string, c chan string) {
+	time.Sleep(5 * time.Second)
 	_, err := http.Get(url) // blocking call
 	if err != nil {
 		// send message to channel
