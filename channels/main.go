@@ -68,13 +68,20 @@ func main() {
 		wait for channel to return a value, assign it to l
 		then pass it to / spawn a new go routine
 	*/
-	for l := range c {
-		go checkLink(l, c)
+	for u := range c {
+		//go checkLink(l, c)
+		// function literal
+		go func(url string) { // literal must take a parameter
+			time.Sleep(5 * time.Second)
+			checkLink(url, c)
+		}(u) // passing the current u variable by value
+		/* if you directly reference the l variable in the function literal,
+		it may have been changed before it's used (IE: main function changes
+		it in memory before go routine tries to use it)*/
 	}
 }
 
 func checkLink(url string, c chan string) {
-	time.Sleep(5 * time.Second)
 	_, err := http.Get(url) // blocking call
 	if err != nil {
 		// send message to channel
