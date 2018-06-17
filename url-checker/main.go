@@ -7,11 +7,11 @@ import (
 
 func main() {
 	urls := []string{
-		"https://www.dev.vbms.aide.oit.va.gov/rating",
-		"https://www.test.vbms.aide.oit.va.gov/rating",
-		"https://www.ivv.vbms.aide.oit.va.gov/rating",
-		"https://www.uat.vbms.aide.oit.va.gov/rating",
-		"https://www.pdt.vbms.aide.oit.va.gov/rating",
+		"https://www.",
+		"https://www.",
+		"https://www.",
+		"https://www.",
+		"https://www.",
 	}
 
 	c := make(chan string)
