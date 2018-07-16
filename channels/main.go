@@ -24,7 +24,7 @@ func main() {
 			send the value 5 into this channel
 
 		myNumber <- channel
-			wait for a value to be sent into the hannel.  When we get one,
+			wait for a value to be sent into the channel.  When we get one,
 			assign the value to myNumber
 
 		fmt.Println(<- channel)
