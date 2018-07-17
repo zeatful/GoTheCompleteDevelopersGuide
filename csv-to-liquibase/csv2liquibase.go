@@ -56,7 +56,7 @@ func parseCSV(path string) ([]Object, error) {
 
 // split up workload
 func splitWork(objects []Object, author string) {
-	jobcount := 8                // total jobs to run
+	jobcount := runtime.NumCPU() // total jobs to run
 	length := len(objects)       // number of elements
 	divided := length / jobcount // how many items should exist in each job
 
@@ -144,9 +144,9 @@ func main() {
 	author := os.Args[2]
 
 	// confirm number of CPU threads available
-	fmt.Println(runtime.NumCPU())
+	fmt.Println("Threads Used: " + strconv.Itoa(runtime.NumCPU()))
 
-	// parse the CSV into a object slice
+	// parse the CSV into an object slice
 	objects, _ := parseCSV(inputFile)
 
 	// attempt to split the work to write out liquiBase for the objects
